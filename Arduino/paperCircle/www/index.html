@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Cerchi</title>
+	<script type="text/javascript" src="paper.js"></script>
+	<script type="text/javascript" src="zepto.min.js"></script>		
+
+	<script type="text/paperscript" canvas="canvas">
+
+	window.globals = { 
+		setRadius: function(newRadius) {
+			//get the actual radius
+			radius = myCircle.bounds.width / 2;				
+
+			//scale in relation to the actual radius 
+			myCircle.scale(newRadius / radius);	
+		}
+	};
+
+	var myCircle = new Path.Circle({
+	center: view.center,
+	radius: 30,
+	fillColor: '#CCC'
+	});
+
+
+	</script>
+</head>
+<body>
+	<canvas id="canvas" resize></canvas>
+
+	<script type="text/javascript">	
+
+			paper.install(window);
+
+			function refresh() {
+
+			  	$.get('/arduino/light/', function(json_response){
+			  				var lightVal = json_response.lightVal;			  					  		
+				  			globals.setRadius(lightVal);
+				  		}
+				  	);			  	
+	  		}	
+
+
+			window.setInterval(refresh, 1000);
+	</script>
+</body>
+</html>

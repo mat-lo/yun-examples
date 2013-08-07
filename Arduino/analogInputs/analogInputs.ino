@@ -6,7 +6,9 @@
 
  You can then go to http://arduino.local/sd/analogInputs
  to see the output of this sketch, where "arduino" is your 
- board name. 	 
+ board name. 	
+
+ 08/2013 - Matteo Loglio (matlo.me) 	   
 */
 
 #include <Bridge.h>

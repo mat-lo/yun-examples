@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+	<title>Arduino Yun &bull; Led Slider</title>
+	
+	<script type="text/javascript" src="zepto.min.js"></script>
+
+	<script type="text/javascript">
+
+		var value;
+		var pin;
+
+	   	function sendVal() {		  	
+		   		//bind the slider value to the URL
+			  	$.get('/arduino/led/' + pin + '/' + value, function(){		  			
+			  		}
+			  	);
+	  	}
+
+	  	function updateVal(val) {
+      		value = val; 
+      		
+      		//get pin from <select>
+      		pin = $('#pin').val();
+
+      		//send value
+			sendVal();
+
+			//print the value in the #val div
+			$("#val").text(value);		
+    	}	  
+
+	</script>	
+
+<style type="text/css">
+	body {
+		text-align: center;
+		margin: 100px 0;
+	}
+	
+	input[type="range"]{
+		outline: none;
+		-webkit-appearance:none; 
+		-moz-apperance:none; 
+		width:80%;
+		height: 10px;
+		-webkit-border-radius:10px; 
+		-moz-border-radius:10px; 
+		-ms-border-radius:10px; 
+		-o-border-radius:10px;
+		background-color: #CCC;
+
+	}
+
+	input::-webkit-slider-thumb{
+		-webkit-appearance:none; 
+		-moz-apperance:none; 
+		width:30px; 
+		height:30px;
+		-webkit-border-radius:30px; 
+		-moz-border-radius:30px; 
+		-ms-border-radius:30px; 
+		-o-border-radius:30px; 
+		border-radius:30px;
+		background: #00B0B3;
+	}
+
+	h1 {
+		font-family: sans-serif;
+		color: #00B0B3;
+		margin: 50px;
+	}
+
+	#val {
+		font-size: 3em;
+		font-family: sans-serif;
+		color: #00B0B3;
+	}
+</style>
+
+</head>
+
+<body>
+		<h1>Connect a LED to pin 11</h1>
+		<select id="pin">
+		  <option value="3">3</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="9">9</option>
+		  <option value="10">10</option>
+		  <option value="11">11</option>
+		  <option value="13">13</option>
+		</select>	
+		<input type="range" min="0" max="255" onchange="updateVal(this.value);">
+		<p id="val">0</p>	
+</body>

@@ -1,0 +1,28 @@
+	body {
+	  background-color: #333;
+	}			
+	canvas { 
+		top: 0;
+		left: 0;
+		position: absolute;		
+		outline: 0px; 		
+		width: 100%;
+		height: 100%;
+	}
+
+	#container{
+	   position: absolute;
+	   top: 50%;
+	   margin-top: -64px;/* half of #content height*/
+	   left: 0;
+	   width: 100%;
+	}
+
+
+	#arduino {		
+		width: 128px;
+		height: 128px;
+		margin: 0 auto;
+		background: url('arduino.png') no-repeat;
+		background-size: 100%;		
+	}
