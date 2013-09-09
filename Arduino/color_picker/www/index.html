@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Yun Color Picker</title>	
+	<script type="text/javascript" src="zepto.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	
+	<div id="container">		
+		
+		<div id="led"><p id="label">0 / 0 / 0</p></div>
+
+		<div class="inputs">
+			<input class="red" type="range" name="red" min="0" max="1023" value="0" onchange="">
+			<input class="green" type="range" name="green" min="0" max="1023" value="0">
+			<input class="blue" type="range" name="blue" min="0" max="1023" value="0">
+		</div>
+	</div>
+
+	<script type="text/javascript">														
+			var r = 0;
+				g = 0;
+				b = 0;	
+
+			$('.red').on('change', function() {    			
+    			r = $(this).val();
+    			setColor();
+			});
+
+			$('.green').on('change', function() {    			
+    			g = $(this).val();
+    			setColor();
+			});
+
+			$('.blue').on('change', function() {    			
+    			b = $(this).val();
+    			setColor();
+			});		
+
+			$('.inputs').on('mouseup', function() {    			    			
+    			sendVal();
+			});									
+
+			function setColor() {
+
+				rRound = Math.round(r / 4);
+				gRound = Math.round(g / 4);
+				bRound = Math.round(b / 4);
+
+				$('#led').css('border','10px solid rgb(' + rRound + ',' + gRound + ',' + bRound + ')');
+
+				$('#label').html(rRound + ' / ' + gRound + ' / ' + bRound);
+				$('#label').css('color','rgb(' + rRound + ',' + gRound + ',' + 
+					bRound + ')');								
+			}
+
+			function sendVal() {		  	
+			  	$.get('/arduino/rgb/' + r + '.' + g + '.' + b, function(){
+			  		}
+		  		);
+	  		}
+
+	</script>
+</body>
