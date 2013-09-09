@@ -1,6 +1,17 @@
+/*
+The sketch is exactly the same as the bridge example, if
+you browse in the sketch folder, in the "www" subfolder
+there's an inde.html page with a visual interface built
+upon the "flatUI" framework.
 
-// Possible commands are listed here:
-//
+to visit the html interface, go in your browser and type:
+http://arduino.local/sd/color_picker
+where "arduino" is your 
+board name. 	
+
+08/13 - Matteo Loglio (matlo.me)
+*/
+
 // "digital/13"     -> digitalRead(13)
 // "digital/13/1"   -> digitalWrite(13, HIGH)
 // "analog/2/123"   -> analogWrite(2, 123)

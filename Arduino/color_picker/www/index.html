@@ -11,9 +11,9 @@
 		<div id="led"><p id="label">0 / 0 / 0</p></div>
 
 		<div class="inputs">
-			<input class="red" type="range" name="red" min="0" max="1023" value="0" onchange="">
-			<input class="green" type="range" name="green" min="0" max="1023" value="0">
-			<input class="blue" type="range" name="blue" min="0" max="1023" value="0">
+			<input class="red" type="range" name="red" min="0" max="255" value="0" onchange="">
+			<input class="green" type="range" name="green" min="0" max="255" value="0">
+			<input class="blue" type="range" name="blue" min="0" max="255" value="0">
 		</div>
 	</div>
 
@@ -43,15 +43,15 @@
 
 			function setColor() {
 
-				rRound = Math.round(r / 4);
-				gRound = Math.round(g / 4);
-				bRound = Math.round(b / 4);
+				r = Math.round(r);
+				g = Math.round(g);
+				b = Math.round(b);
 
-				$('#led').css('border','10px solid rgb(' + rRound + ',' + gRound + ',' + bRound + ')');
+				$('#led').css('border','10px solid rgb(' + r + ',' + g + ',' + b + ')');
 
-				$('#label').html(rRound + ' / ' + gRound + ' / ' + bRound);
-				$('#label').css('color','rgb(' + rRound + ',' + gRound + ',' + 
-					bRound + ')');								
+				$('#label').html(r + ' / ' + g + ' / ' + b);
+				$('#label').css('color','rgb(' + r + ',' + g + ',' + 
+					b + ')');								
 			}
 
 			function sendVal() {		  	
