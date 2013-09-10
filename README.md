@@ -1,6 +1,6 @@
 ##Arduino Yún Examples
 
-###This repository is a collection of Arduino Yún sketches that make use of the Bridge library to create web servers, combined with visual interfaces and experiments with JS.
+#####This repository is a collection of Arduino Yún sketches that make use of the Bridge library to create web servers, combined with visual interfaces and experiments with JS.
 
 To start with these examples, you need to **prepare a micro-SD card**. Make an empty "www" folder at the following path:
 
@@ -25,9 +25,9 @@ Eventually you can try the following:
 
 where "arduino" is your Arduino Yún board name
 
-###These examples are still a work in progress, most of them are incomplete but they can be a good starting point. 
+#####These examples are still a work in progress, most of them are incomplete but they can be a good starting point. 
 
-###Realized by Matteo Loglio ([matlo.me](http://matlo.me)) in August 2013.
+#####Realized by Matteo Loglio ([matlo.me](http://matlo.me)) in August 2013.
 
 *	*	*	*	*	*	*	*	*	*	*	
 
