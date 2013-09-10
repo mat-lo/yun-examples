@@ -27,7 +27,7 @@ where "arduino" is your Arduino Yún board name
 
 #####These examples are still a work in progress, most of them are incomplete but they can be a good starting point. 
 
-#####Realized by Matteo Loglio ([matlo.me](http://matlo.me)) in August 2013.
+Realized by Matteo Loglio ([matlo.me](http://matlo.me)) in August 2013.
 
 *	*	*	*	*	*	*	*	*	*	*	
 
