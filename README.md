@@ -1,14 +1,14 @@
 ##Arduino Yún Examples
 
-This repository is a collection of Arduino Yún sketches that make use of the Bridge library to create web servers, complemented by visual interfaces and experiments with JS.
+###This repository is a collection of Arduino Yún sketches that make use of the Bridge library to create web servers, combined with visual interfaces and experiments with JS.
 
-To start with these examples, you need to *prepare a micro-SD card*. Make an empty "www" folder at the following path:
+To start with these examples, you need to **prepare a micro-SD card**. Make an empty "www" folder at the following path:
 
-*sd/arduino/www*
+**sd/arduino/www**
 
 Then insert the SD card in your Arduino Yún.
 
-Once your board is configured to connect to a WiFi network ([follow this tutorial](http://arduino.cc/en/Guide/ArduinoYun#toc13)), in the *Tools->Port* menu of your Arduino IDE, select the WiFi version of your board (the one with an IP address).
+Once the board is configured to connect to a WiFi network ([follow this tutorial](http://arduino.cc/en/Guide/ArduinoYun#toc13)), in the **Tools->Port** menu of your Arduino IDE, select the WiFi version of your board (the one with an IP address).
 
 Now when you upload, all the content is uploaded on your board via WiFi, included the "www" subfolder of your sketch. It is placed in a subfolder of the previously created folder on your SD car, named after your sketch.
 
@@ -25,9 +25,9 @@ Eventually you can try the following:
 
 where "arduino" is your Arduino Yún board name
 
-These examples are still a work in progress, most of them are incomplete but they can be a good starting point. 
+###These examples are still a work in progress, most of them are incomplete but they can be a good starting point. 
 
-Realized by Matteo Loglio ([matlo.me](http://matlo.me)) in August 2013.
+###Realized by Matteo Loglio ([matlo.me](http://matlo.me)) in August 2013.
 
 *	*	*	*	*	*	*	*	*	*	*	
 
