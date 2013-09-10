@@ -2,6 +2,8 @@
 
 #####This repository is a collection of Arduino Yún sketches that make use of the Bridge library to create web servers, combined with visual interfaces and experiments with JS.
 
+![screenshot](/pictures/color_picker.jpg)
+
 To start with these examples, you need to **prepare a micro-SD card**. Make an empty "www" folder at the following path:
 
 **sd/arduino/www**
