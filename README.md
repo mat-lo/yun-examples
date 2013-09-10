@@ -77,7 +77,7 @@ A viusal interface based on the Bridge example. It uses Flat UI elements. It's s
 
 ![screenshot](/pictures/noiseField.jpg)
 
-Interaction between processing.js and Yún Server. The amount of light perceived by an LDR is changing the size of a noise field particles.
+Interaction between processing.js and Yún Server. The amount of light perceived by an LDR changes the size of a noise field particles.
 
 *	*	*	*	*	*	*	*	*	*	*	
 
@@ -93,7 +93,7 @@ Same as above, but full screen
 
 ![screenshot](/pictures/paperCircle.jpg)
 
-Interaction between paper.js and Yún Server. The amount of light perceived by an LDR is changing the size of a circle.
+Interaction between paper.js and Yún Server. The amount of light perceived by an LDR changes the size of a circle.
 
 *	*	*	*	*	*	*	*	*	*	*	
 
@@ -101,5 +101,5 @@ Interaction between paper.js and Yún Server. The amount of light perceived by a
 
 ![screenshot](/pictures/three.jpg)
 
-Interaction between three.js and Yún Server. The amount of light perceived by an LDR is changing the Y-scale of a textured box, rendered using webGL.
+Interaction between three.js and Yún Server. The amount of light perceived by an LDR changes the Z-scale of a textured box, rendered using webGL.
 
