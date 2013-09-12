@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<head>
+<title>Yun Messages</title>
+<script type="text/javascript" src="zepto.min.js"></script>	
+</head>
+<body>
+<H1> Insert your message </H1> <br>
+<form name="msgform" onSubmit="return sendMsg()">
+<input type="text" name="msg">
+<input type="submit" value="Yun it!" >
+</form>
+<script type="text/javascript">	
+	
+function sendMsg() {	
+$.get('/arduino/msg/' + document.msgform.msg.value + '/',
+	function(){
+		alert("Success");
+	}
+);
+return false;
+
+}
+</script>
+</body>
