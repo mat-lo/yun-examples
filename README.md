@@ -29,7 +29,7 @@ where "arduino" is your Arduino Yún board name
 
 #####These examples are still a work in progress, most of them are incomplete but they can be a good starting point. They were tested successfully with Google Chrome, some of them don't work with Firefox (the color_picker in FF has a strange bug where it shows the previously selected color instead of the current).
 
-Realized by Matteo Loglio ([matlo.me](http://matlo.me)) in August 2013.
+Realized by Matteo Loglio ([matlo.me](http://matlo.me)) and Angelo Scialabba
 
 *	*	*	*	*	*	*	*	*	*	*	
 
