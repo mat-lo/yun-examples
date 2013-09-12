@@ -1,3 +1,19 @@
+/********
+Control a sure led matrix through your browser
+
+Go on http://arduino.local/sd/message , write your
+message in the form and click the button and it
+will appear on the matrix as a scrolling text.
+
+This sketch put received messages inside a queue and display
+them in the correct order.
+New messages will overwrite old ones if the buffer is full.
+
+
+Written by Angelo Scialabba
+@12 Sept 2013
+
+********/
 #include <font_5x4.h>
 #include <HT1632.h>
 #include <images.h>
@@ -56,11 +72,11 @@ void loop () {
   
  
   
-  //*************Move the message and select new messages*****************
+  //*************Scroll the message and select new messages*****************
   
   x_pos++;; //shift the message of 1 column to left
   
-  //check if the the entire message goes out from the left edge
+  //check if the the entire message scrolled out the matrix
   if  (x_pos == (wd + OUT_SIZE * 2)) {  
     
     x_pos = 0;        //set the message position to the initial position
@@ -68,7 +84,7 @@ void loop () {
     if (curr_msg!=last_msg){         //is there an unread message?
     
       if (curr_msg < 9 ) curr_msg++;  //select the next message
-      else curr_msg = 0;     //end of the buffer, start from beginning
+      else curr_msg = 0;     //end of the buffer, start from beginning  (the next message overwrote the first)
       msg[curr_msg].toCharArray(final_message,32);   //convert the string into a char array
       wd = HT1632.getTextWidth(final_message, FONT_5X4_WIDTH, FONT_5X4_HEIGHT); // Give the width, in columns, of the assigned string
       
