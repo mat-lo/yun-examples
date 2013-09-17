@@ -1,0 +1,26 @@
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 6em;
+  font-family: sans-serif;
+}
+
+#magical-ride {      
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;      
+  text-align: center;
+  cursor: pointer;
+}
+
+#magical-ride p {
+  margin-top: 200px;
+}
+
+#info {
+  font-size: 20px;
+  text-align: center;
+  color: #777;
+  visibility: hidden;
+}
