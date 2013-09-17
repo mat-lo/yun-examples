@@ -50,7 +50,7 @@
       meSpeak.loadVoice(fname, voiceLoaded);
     }
 
-    //speakNow("vagina") and your computer will say "vagina"
+    //speakNow("hey dude") and your browser will say "hey dude"
     speakNow = function(content) {
             meSpeak.speak(content, {
               amplitude: 100,
@@ -63,15 +63,21 @@
     //zepto · jQuery stuff
     $(document).ready(function() {
       $('#magical-ride').click(function() {
-          startTheMagicalRide();        
+        if (isWorking == false) {
+          isWorking = true;
+          startTheMagicalRide(); 
+        }       
       });  
     });
     
     //Magical Ride!
     var step = 0;
     var pin = 0;
+    var isAnalog = false;
+    var mode = '';
     var value = 0;
-    var blinduinoIsStillLookin = true;  
+    var blinduinoIsStillLookin = true; 
+    var isWorking = false; 
 
     function setStep(n) {
       step = n;
@@ -124,47 +130,100 @@
         }
       };
 
-      recognition.onresult = function(event) {        
-      if (step == 0) {                
+      recognition.onresult = function(event) {                               
 
-        for (var i = event.resultIndex; i < event.results.length; ++i) {      
-            //final_transcript += event.results[i][0].transcript;      
+          for (var i = event.resultIndex; i < event.results.length; ++i) {                  
             result = event.results[i][0].transcript;
-            console.log(result);
+            //console.log(result);
             $('#magical-ride').html(result);
 
-            pin = Number(result);
-            recognition.stop();
+            if (step == 0) { 
 
-            step = 1;
+              pin = Number(result);                      
 
-            if (isNaN(pin)) {
-              speakNow("that's not a number, can't you see that? say a pin number now");
-              setInterval(function(){
-                setStep(0);
-                recognition.start();                          
-              },1000);
-            } else if (pin > 13) {
-                speakNow("arduino has only 13 pins, you moron");
-                setInterval(function(){
-                  setStep(0);                 
-                  recognition.start();           
-              },1000);
+              if (isNaN(pin)) {
+                speakNow("that's not a number, say a pin number from 0 to 13");
+              } else if (pin > 13) {
+                 speakNow("arduino has only 13 pins");                 
+              } else {   
+                //is pin an analog ouptut?
+                if (pin == 11 || pin == 10 || pin == 9 || pin == 6 || pin == 5 || pin == 3 || pin == 13) {
+                  isAnalog = true;
+                } 
+                speakNow("you selected pin number" + pin + ". Say how do you want to use it. Just say input or output");                                
+                step++;                           
+               }
+            }          
+            else if (step == 1) {                          
+              mode = result;              
+
+              if (mode == ' output') {
+                $.get('/arduino/mode/' + pin + '/output', function(){});
+                speakNow("pin number" + pin + "is set to" + mode);
+                if (isAnalog) {
+                  setTimeout(function(){
+                  speakNow("pin" + pin + " is a PWM. Say a value from 0 to 255 to assign to that pin");
+                  },3000);
+                } else {
+                  setTimeout(function(){
+                  speakNow("pin" + pin + " is a digital pin. To set it just say high or low");
+                  },3000);
+                }
+                step++;
+              } else if (mode ==  ' input') {
+                $.get('/arduino/mode/' + pin + '/input', function(){});
+                speakNow("pin number" + pin + "is set to" + mode);
+                step+=2;
               } else {
-                speakNow("you selected pin number" + pin);
-                recognition.stop();
+                speakNow("i couldn't recognize it, try again");
               }
             }
-          }            
+
+            //output
+            else if (step == 2) {
+              var valid = false;
+              if (isAnalog) {
+                value = Number(result);
+
+                if(isNaN(value)) {
+                  speakNow("that's not a number. try again");
+                } else if (value < 0 || value > 255) {
+                  speakNow("that's not under 255");
+                } else {
+                  valid = true;
+                }
+              } else {
+                if(result == ' high') {
+                  value = 255; 
+                  valid = true;                                   
+                } else if (result == ' low') {
+                  value = 0;
+                  valid = true;
+                } else {
+                  speakNow("just say high or low");
+                }
+              }
+
+              if (valid) {
+                speakNow("pin" + pin + " set to " + result);
+                $.get('/arduino/analog/' + pin + '/' + value, function(){});      
+              }
+            }
+
+            //input 
+            else if (step == 3) {
+
+            }
+          }
         };
       }
        
 
     function welcomeDude() {
       speakNow("Welcome to Blinduino. Click anywhere to start");
-      setInterval(function(){                
+      setTimeout(function(){                
                 $('#magical-ride').html("Click anywhere to start");
-              },3000);
+              },4000);
     }  
 
     function startButton(event) {
@@ -176,8 +235,8 @@
       recognition.lang = 'en-GB', 'United Kingdom';
       recognition.start();
       ignore_onend = false;      
-      start_img.src = 'mic-slash.gif';
-      showInfo('info_allow');
+      //start_img.src = 'mic-slash.gif';
+      //showInfo('info_allow');
       showButtons('none');
       start_timestamp = event.timeStamp;
     }
@@ -185,24 +244,6 @@
   </script>
 
 <body onload="welcomeDude()">
-<div id="info">
-  <p id="info_start">Click on the microphone icon and begin speaking.</p>
-  <p id="info_speak_now">Speak now.</p>
-  <p id="info_no_speech">No speech was detected. You may need to adjust your
-    <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-      microphone settings</a>.</p>
-  <p id="info_no_microphone" style="display:none">
-    No microphone was found. Ensure that a microphone is installed and that
-    <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-    microphone settings</a> are configured correctly.</p>
-  <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
-  <p id="info_denied">Permission to use microphone was denied.</p>
-  <p id="info_blocked">Permission to use microphone is blocked. To change,
-    go to chrome://settings/contentExceptions#media-stream</p>
-  <p id="info_upgrade">Web Speech API is not supported by this browser.
-     Upgrade to <a href="//www.google.com/chrome">Chrome</a>
-     version 25 or later.</p>
-</div>
 <div id="magical-ride">
 
 </div>

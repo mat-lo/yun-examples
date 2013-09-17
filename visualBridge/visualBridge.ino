@@ -5,7 +5,7 @@ there's an inde.html page with a visual interface built
 upon the "flatUI" framework.
 
 to visit the html interface, go in your browser and type:
-http://arduino.local/sd/color_picker
+http://arduino.local/sd/visualBridge
 where "arduino" is your 
 board name. 	
 
