@@ -1,13 +1,15 @@
 /*
-The sketch is exactly the same as the bridge example,
-just the "www" folder is different. 
+This sketch, the.ino part is just a modified bridge example.
 If you browse in the sketch folder, in the "www" subfolder
-there's an index  .html page with an audio control, follow
-the instructions (tested with Google Chrome > 25)
+there's an index.html page with a voice control, designed
+for blind people, follow the instructions.
+
+WebSpeech API requires Google Chrome > 25
 
 to visit the html page, go in your browser and type:
 http://arduino.local/sd/blinduino
-where "arduino" is your board name. 	
+where "arduino" is your board name, after uploading 	
+the sketch via WiFi.
 
 09/13 - Matteo Loglio (matlo.me)
 */

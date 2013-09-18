@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>Web Speech API Demo</title>
+<title>Blinduino · Voice Interface for the blind</title>
 
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="s.css">
 
 <script type="text/javascript" src="js/mespeak.js"></script>
 <script type="text/javascript" src="js/zepto.min.js"></script>
@@ -10,6 +10,14 @@
 
 <body onload="welcomeDude()">
   <div id="magical-ride">
+  	<img id="logo" src="p/blinduino.png">
     <p id="magical-text"></p>
+    <p id="recap">    	
+    	<span id="pin"></span>
+    	<span> • </span>
+    	<span id="mode"></span>
+    	<span> • </span>
+    	<span id="value"></span>
+    </p>
   </div>
 </body>

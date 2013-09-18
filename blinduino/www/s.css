@@ -1,8 +1,13 @@
 body {
   height: 100%;
-  margin: 0;
-  font-size: 6em;
-  font-family: sans-serif;
+  margin: 0;  
+  font-family: courier;
+}
+
+#logo {
+  margin-top: 50px;
+  width: 30%;
+  min-width: 200px;
 }
 
 #magical-ride {      
@@ -14,8 +19,15 @@ body {
   cursor: pointer;
 }
 
-#magical-ride p {
-  margin-top: 200px;
+#magical-text {
+  margin-top: 15px;
+  font-size: 1em;
+  color: #DDD;
+}
+
+#recap {
+  color: rgb(0,176,179);
+  font-size: 2em;
 }
 
 #info {

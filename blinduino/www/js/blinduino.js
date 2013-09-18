@@ -115,6 +115,7 @@ if (!('webkitSpeechRecognition' in window)) {
             isAnalog = true;
           }
           speakNow("you selected pin number" + pin + ". Say how do you want to use it. Just say input or output");
+          $('#pin').text(pin);
           step++;
         }
       } else if (step == 1) {
@@ -134,6 +135,7 @@ if (!('webkitSpeechRecognition' in window)) {
             }, 3000);
           }
           step++;
+          $('#mode').text(mode);
         } else if (mode == ' input') {
           $.get('/arduino/mode/' + pin + '/input', function() {});
 
@@ -141,12 +143,15 @@ if (!('webkitSpeechRecognition' in window)) {
             speakNow("pin A" + pin + "is set to analog input");
             setInterval(function() {
               refreshInput(pin);
+              $('#value').text(value);
               speakNow("pin " + pin + " is reading" + value + ". To cancel say banana");
             }, 6000);
           } else {
-            speakNow("pin " + pin + "is set to digital input");
-            intervalID = setInterval(function() {
+            speakNow("pin " + pin + "is set to digital input");            
+
+            intervalID = setInterval(function() {              
               refreshInput(pin);
+              $('#value').text(value);
               var highlow = '';
               if (value > 512) {
                 highlow = 'high'
@@ -157,6 +162,7 @@ if (!('webkitSpeechRecognition' in window)) {
             }, 6000);
           }
           step += 2;
+          $('#mode').text(mode);
         } else {
           speakNow("i couldn't recognize it, try again");
         }
@@ -196,6 +202,7 @@ if (!('webkitSpeechRecognition' in window)) {
         if (valid) {
           speakNow("pin" + pin + " set to " + result + ". Say another value to set it again or banana to start over");
           $.get('/arduino/analog/' + pin + '/' + value, function() {});
+          $('#value').text(value);
         }
       }
 
@@ -225,6 +232,9 @@ function restart() {
   isWorking = false;
   welcomeDude();
   clearInterval(intervalID);
+  $('#pin').text('');
+  $('#mode').text('');
+  $('#value').text('');
 }
 
 //opening scene
