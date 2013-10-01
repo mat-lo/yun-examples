@@ -103,3 +103,19 @@ Interaction between paper.js and Yún Server. The amount of light perceived by a
 
 Interaction between three.js and Yún Server. The amount of light perceived by an LDR changes the Z-scale of a textured box, rendered using webGL.
 
+*	*	*	*	*	*	*	*	*	*	*	
+
+### switch
+
+![screenshot](/pictures/switch.jpg)
+
+A simple switch that toggles a TinkerKit! relay and the on-board LED. Displayed at the maker faire.
+
+*	*	*	*	*	*	*	*	*	*	*	
+
+### voice switch
+
+![screenshot](/pictures/voice-relay.jpg)
+
+An evolution of the switch sketch. Control the switch also with your voice, saying "on" and "off". It makes use of the Web Speech API, at the moment it works just on the deskto Chrome, version > 25.
+
