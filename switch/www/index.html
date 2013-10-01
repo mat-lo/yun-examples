@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+
+<meta charset="utf-8">
+<title>Arduino Yun • Talk To Me</title>
+
+<link rel="stylesheet" type="text/css" href="s.css">
+
+<script type="text/javascript" src="zepto.min.js"></script>
+
+<style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  margin: 2em;
+  background: #f0f0f0;
+  text-align: center;
+}
+
+body {
+  height: 100%;
+  margin: 0;    
+}
+
+input {
+  display: block;
+  opacity: 0;  
+}
+label {
+  width: 70px;  
+  height: 30px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  background: rgb(189, 189, 189);
+  border-radius: 50px;
+  transition: background-color 0.4s;
+  -moz-transition: background-color 0.4s;
+  -webkit-transition: background-color 0.4s;
+  margin-bottom: 10px;
+}
+
+#bulb {
+  width: 225px;
+  height: 334px;
+  background: url('bulb.png');
+  background-size: 100%;
+  margin: 0 auto 50px auto;
+  background-color: transparent;
+  transition: background-color 0.4s;
+}
+
+label:after {
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  content: '';
+  position: absolute;
+  background: #f0f0f0;
+  border-radius: 81px;
+}
+input:checked + label {
+  background: rgb(0, 151, 157);
+}
+input:checked + label:after {
+  left: auto;
+  right: 0;
+}
+
+p {
+  font: normal 1em/1em sans-serif;
+  color: rgb(189, 189, 189);
+  display: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+input:checked ~ p:nth-of-type(1) {
+  color: rgb(0, 151, 157);
+  display: block;
+}
+input:not(:checked) ~ p:nth-of-type(2) {
+  display: block;
+}
+</style>
+
+</head>
+
+<body>
+  <div id="container">    	
+
+    <input type="checkbox" id="checkbox1" />
+    <label for="checkbox1"></label>  
+    <p>ON</p>
+    <p>OFF</p>  
+
+  	<div id="bulb"></div>    
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      $('#checkbox1').click(function() {                
+        if ($(this).is(':checked')) {
+          //ON
+          relayOn();
+        } else {
+          //OFF
+          relayOff();
+        }
+      });
+    });
+
+    function relayOn() {      
+      $('#bulb').css("background-color", "rgb(255,235,138)");
+
+      //send 1 to arduino
+      $.get('/arduino/relay/1', function() {});
+    }
+
+    function relayOff() {      
+      $('#bulb').css("background-color", "transparent");
+
+      //send 0 to arduino
+      $.get('/arduino/relay/0', function() {});
+    }
+    </script>
+</div>
+</body>
