@@ -109,7 +109,7 @@ Interaction between three.js and Yún Server. The amount of light perceived by a
 
 ![screenshot](/pictures/switch.jpg)
 
-A simple switch that toggles a TinkerKit! relay and the on-board LED. Displayed at the maker faire.
+A simple switch that toggles a TinkerKit! relay and the on-board LED.
 
 *	*	*	*	*	*	*	*	*	*	*	
 
